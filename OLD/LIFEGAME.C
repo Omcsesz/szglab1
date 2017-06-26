@@ -1,5 +1,5 @@
-//Teend”k:
-//-v‚gtelen t bla k‚sz¡t‚se
+//Teendok:
+//-vegtelen tabla keszitese
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
@@ -8,22 +8,22 @@
 
 #define SOR 24
 #define OSZ 24
-#define URES ' '  //res a mez”
-#define TELI 'O'  //l‚tezik egy sejt
+#define URES ' '  //Âures a mezo
+#define TELI 'O'  //letezik egy sejt
 #define TILT 'x'  //megszunik a sejt
-#define SZUL 's'  //szletend”
-#define NMAX 100  //l‚p‚sek sz ma
+#define SZUL 's'  //szÂuletendo
+#define NMAX 100  //lepesek szama
 
 //
-//Menvez‚relt C program, mely a Conway f‚le LIFE (‚letj t‚k) modellt val¢s¡tja meg.
-//R‚szletek a http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life c¡men.
+//MenÂvezurelt C program, mely a Conway fele LIFE (eletjatek) modellt valositja meg.
+//Reszletek a http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life cimen.
 
-//A program k‚pes:
-//- 	24*24-es ‚lett‚ren,
-//-	a felhaszn l¢  ltal,
-//-	illetve file-b¢l beolvasott kezdeti  llapotb¢l indulni,
-//-	a szimul ci¢ folyamatos vagy l‚p‚senk‚nti megjelen¡t‚s‚re.
-//-     van v‚letlenszeru gener l s is
+//A program kepes:
+//- 	24*24-es eletteren,
+//-	a felhasznalo altal,
+//-	illetve file-bol beolvasott kezdeti allapotbol indulni,
+//-	a szimulacio folyamatos vagy lepesenkenti megjelenitesere.
+//-     van veletlenszeru generalas is
 
 void init(char eletter[SOR][OSZ])
 {
@@ -52,7 +52,7 @@ void kiir(char eletter[SOR][OSZ])
     printf("     ");
     for(j= 0; j < OSZ; j++)
     {
-      printf("%c  ", eletter[i][j]);   //‚lett‚r ki¡rat sa
+      printf("%c  ", eletter[i][j]);   //eletter kiiratasa
     }
     printf("\n");
   }
@@ -67,12 +67,12 @@ void feltoltes(char eletter[SOR][OSZ])
   init(eletter);
 
   clrscr();
-  printf(">>>Felt”lt‚s<<<\n");
+  printf(">>>Feltoltâ€šs<<<\n");
   for (i= 0; i < SOR; i++)
   {
     for(j= 0; j < OSZ; j++)
     {
-      c= getch();   //‚lett‚r egy cell j nak beolvas sa
+      c= getch();   //eletter egy cellajanak beolvasasa
       if (c < '0')
       {
 	c= URES;
@@ -87,7 +87,7 @@ void feltoltes(char eletter[SOR][OSZ])
     printf("\n");
   }
 
-  printf("V‚ge.\n");
+  printf("Vâ€šge.\n");
   getchar();
 }
 
@@ -102,12 +102,12 @@ void beolvas(char eletter[SOR][OSZ])
   fp= fopen("lifegame.txt", "r+");
 
   clrscr();
-  printf(">>>Beolvas s<<<\n");
+  printf(">>>Beolvasas<<<\n");
   for (i= 0; i < SOR; i++)
   {
     for(j= 0; j < OSZ; j++)
     {
-      eletter[i][j]= fgetc(fp);   //‚lett‚r egy cell j nak beolvas sa
+      eletter[i][j]= fgetc(fp);   //eletter egy cellajanak beolvasasa
     }
     fgetc(fp);
   }
@@ -115,7 +115,7 @@ void beolvas(char eletter[SOR][OSZ])
   fclose(fp);
 
   kiir(eletter);
-  printf("V‚ge.\n");
+  printf("Vâ€šge.\n");
   getchar();
 }
 
@@ -129,7 +129,7 @@ void general(char eletter[SOR][OSZ])
   randomize();
 
   clrscr();
-  printf(">>>Gener l s<<<\n");
+  printf(">>>Generalas<<<\n");
 
   for (i= 0; i < SOR; i++)
   {
@@ -147,7 +147,7 @@ void general(char eletter[SOR][OSZ])
     }
   }
 
-  printf("K‚sz.\n");
+  printf("Kesz.\n");
   getchar();
 }
 
@@ -160,33 +160,33 @@ void mentes(char eletter[SOR][OSZ])
   fp= fopen("lifegame.txt", "w+");
 
   clrscr();
-  printf(">>>Ment‚s<<<\n");
+  printf(">>>Mentes<<<\n");
   for (i= 0; i < SOR; i++)
   {
     for(j= 0; j < OSZ; j++)
     {
-      fprintf(fp, "%c", eletter[i][j]);   //‚lett‚r ki¡rat sa
+      fprintf(fp, "%c", eletter[i][j]);   //eletter kiiratasa
     }
     fprintf(fp,"\n");
   }
 
   fclose(fp);
 
-  printf("V‚ge.\n");
+  printf("Vâ€šge.\n");
   getchar();
 }
 
-// bal fels”b”l indulunk, az ¢ramutat¢val megegyez” ir nyban
+// bal felsobol indulunk, az oramutatoval megegyezo iranyban
 char szomszed(char eletter[SOR][OSZ], int i, int j, int k)
 {
-  if      (k == 1)                //bal fels” szomsz‚d
+  if(k == 1)                //bal felso szomszed
   {
-    if (i == 0 && j == 0)         // hogy ne fussunk ki a j t‚kt‚rr”l
+    if (i == 0 && j == 0)         // hogy ne fussunk ki a jatekterrol
       return URES;
     else
       return eletter[i-1][j-1];
   }
-  else if (k == 2)                // fels”
+  else if (k == 2)                // felso
   {
     if (i == 0)
       return URES;
@@ -194,7 +194,7 @@ char szomszed(char eletter[SOR][OSZ], int i, int j, int k)
       return eletter[i-1][j+0];
 
   }
-  else if (k == 3)		  // jobb fels”
+  else if (k == 3)		  // jobb felso
   {
     if (i == 0 && j == OSZ-1)
       return URES;
@@ -207,21 +207,21 @@ char szomszed(char eletter[SOR][OSZ], int i, int j, int k)
     else
       return eletter[i+0][j+1];
   }
-  else if (k == 5)                // jobb als¢
+  else if (k == 5)                // jobb also
   {
     if (i == OSZ-1 && j == SOR-1)
       return URES;
     else
       return eletter[i+1][j+1];
   }
-  else if (k == 6)                // als¢
+  else if (k == 6)                // also
   {
     if (i == SOR-1)
       return URES;
     else
       return eletter[i+1][j+0];
   }
-  else if (k == 7)                // bal als¢
+  else if (k == 7)                // bal also
   {
     if (i == SOR-1 && j == 0)
       return URES;
@@ -237,14 +237,14 @@ char szomszed(char eletter[SOR][OSZ], int i, int j, int k)
   }
   else
   {
-    return URES;		//erre az  gra nem kerl sor
+    return URES;		//erre az agra nem keruÂl sor
   }
 }
 
 int szomszeddb(char eletter[SOR][OSZ], int i, int j)
 {
   int k;
-  int s;  //”sszeg
+  int s;  //osszeg
 
   s= 0;
   for(k= 1; k <= 8; k++)
@@ -290,18 +290,18 @@ void fut(char eletter[SOR][OSZ], int leptet)
 	{
 	  if (eletter[i][j] == URES)
 	  {
-	    eletter[i][j]= SZUL;               //szletik egy £j sejt
+	    eletter[i][j]= SZUL;               //szÂuletik egy uj sejt
 	  }
 	}
 	else if (db == 2 || db == 3)
 	{
-	  //t£l‚li
+	  //tuleli
 	}
 	else
 	{
 	  if (eletter[i][j] == TELI)
 	  {
-	    eletter[i][j]= TILT;            //eltntetend”nek jel”ljk
+	    eletter[i][j]= TILT;            //eltuÂntetendonek jeloljuÂk
 	  }
 	}
 
@@ -332,33 +332,33 @@ void main(void)
 
   init(eletter);
 //  general(eletter);
-  while (1)     //men
+  while (1)     //menÂ
   {
     clrscr();
 
-    printf("             letj t‚k               \n");
+    printf("             Eletjatek               \n");
     printf("                                     \n");
-    printf("        Felt”lt‚s                1   \n");
-    printf("        Beolvas s                2   \n");
-    printf("        Gener l s                3   \n");
-    printf("        Szimul l s(folyamatos)   4   \n");
-    printf("        Szimul l s(l‚p‚senk‚nt)  5   \n");
-    printf("        Ment‚s                   6   \n");
+    printf("        Feltoltes                1   \n");
+    printf("        Beolvasas                2   \n");
+    printf("        Generalas                3   \n");
+    printf("        Szimulalas(folyamatos)   4   \n");
+    printf("        Szimulalas(lepesenkent)  5   \n");
+    printf("        Mentes                   6   \n");
     printf("                                     \n");
-    printf("        V‚ge                     0   \n");
+    printf("        Vege                     0   \n");
 
     c= getch();
-    if      (c == '1') feltoltes(eletter);  //bet”lt‚s a felhaszn l¢  ltal
-    else if (c == '2') beolvas(eletter);    //beolvas s f jlb¢l
-    else if (c == '3') general(eletter);    //v‚letlenszeru gener l s
-    else if (c == '4') fut(eletter, 0);     //folyamatos szimul l s
-    else if (c == '5') fut(eletter, 1);     //l‚p‚senk‚nti szimul l s
-    else if (c == '6') mentes(eletter);     //az utols¢  llapot elment‚se
+    if      (c == '1') feltoltes(eletter);  //betoltes a felhasznalo altal
+    else if (c == '2') beolvas(eletter);    //beolvasas fajlbol
+    else if (c == '3') general(eletter);    //veletlenszeru generalas
+    else if (c == '4') fut(eletter, 0);     //folyamatos szimulalas
+    else if (c == '5') fut(eletter, 1);     //lepesenkenti szimulalas
+    else if (c == '6') mentes(eletter);     //az utolso allapot elmentese
     else if (c == '0') break;
-    else if (c ==  27) break;               // ESC-el is ki lehet l‚pni
+    else if (c ==  27) break;               // ESC-el is ki lehet lepni
     else               continue;
   }
 
-  printf("V‚ge\n");
+  printf("Vege\n");
   getchar();
 }
