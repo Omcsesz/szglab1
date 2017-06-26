@@ -1,0 +1,80 @@
+char get_ter(int i, int j)
+{
+  if (i < 0 )
+    i= SOR-1;
+  if (i > SOR-1 )
+    i= 0;
+  if (j < 0 )
+    j= OSZ-1;
+  if (j > OSZ-1 )
+    j= 0;
+
+  return eletter[i][j];
+}
+
+// bal felsîbîl indulunk, az ¢ramutat¢val megegyezî ir†nyban
+char szomszed(char get_ter(SOR, OSZ), int i, int j, int k)
+{
+  if      (k == 1)                   //bal felsî szomszÇd
+  {
+    //if (i == 0 && j == 0)
+    //  return URES;
+    //else
+      return get_ter(i-1, j-1);
+  }
+  else if (k == 2)                   // felsî
+  {
+    //if (i == 0)
+    //  return URES;
+    //else
+      return get_ter(i-1, j+0);
+
+  }
+  else if (k == 3)		     // jobb felsî
+  {
+    //if (i == 0 && j == OSZ-1)
+    //  return URES;
+    //else
+      return get_ter(i-1, j+1);
+  }
+  else if (k == 4)                   // jobb oldali
+  {
+    //if (j == OSZ-1)
+    //  return URES;
+    //else
+      return get_ter(i+0, j+1);
+  }
+  else if (k == 5)                   // jobb als¢
+  {
+    //if (i == OSZ-1 && j == SOR-1)
+    //  return URES;
+    //else
+      return get_ter(i+1, j+1);
+  }
+  else if (k == 6)                   // als¢
+  {
+    //if (i == SOR-1)
+    //  return URES;
+    //else
+      return get_ter(i+1, j+0);
+  }
+  else if (k == 7)                   // bal als¢
+  {
+    //if (i == SOR-1 && j == 0)
+    //  return URES;
+    //else
+      return get_ter(i+1, j-1);
+  }
+  else if (k == 8)                   // baloldali
+  {
+    //if (j == 0)
+    //  return URES;
+    //else
+      return get_ter(i+0, j-1);
+  }
+  else
+  {
+    return URES;		//erre az †gra nem kerÅl sor
+  }
+
+}
