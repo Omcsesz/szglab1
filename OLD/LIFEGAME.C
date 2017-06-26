@@ -8,14 +8,14 @@
 
 #define SOR 24
 #define OSZ 24
-#define URES ' '  //ures a mezo
+#define URES ' '  //ures a mezo
 #define TELI 'O'  //letezik egy sejt
 #define TILT 'x'  //megszunik a sejt
-#define SZUL 's'  //szuletendo
+#define SZUL 's'  //szuletendo
 #define NMAX 100  //lepesek szama
 
 //
-//Menvezurelt C program, mely a Conway fele LIFE (eletjatek) modellt valositja meg.
+//Menuvezerelt C program, mely a Conway fele LIFE (eletjatek) modellt valositja meg.
 //Reszletek a http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life cimen.
 
 //A program kepes:
@@ -87,7 +87,7 @@ void feltoltes(char eletter[SOR][OSZ])
     printf("\n");
   }
 
-  printf("V‚ge.\n");
+  printf("Vege.\n");
   getchar();
 }
 
@@ -115,7 +115,7 @@ void beolvas(char eletter[SOR][OSZ])
   fclose(fp);
 
   kiir(eletter);
-  printf("V‚ge.\n");
+  printf("Vege.\n");
   getchar();
 }
 
@@ -237,7 +237,7 @@ char szomszed(char eletter[SOR][OSZ], int i, int j, int k)
   }
   else
   {
-    return URES;		//erre az agra nem kerul sor
+    return URES;		//erre az agra nem kerul sor
   }
 }
 
@@ -290,7 +290,7 @@ void fut(char eletter[SOR][OSZ], int leptet)
 	{
 	  if (eletter[i][j] == URES)
 	  {
-	    eletter[i][j]= SZUL;               //szuletik egy uj sejt
+	    eletter[i][j]= SZUL;               //szuletik egy uj sejt
 	  }
 	}
 	else if (db == 2 || db == 3)
@@ -301,7 +301,7 @@ void fut(char eletter[SOR][OSZ], int leptet)
 	{
 	  if (eletter[i][j] == TELI)
 	  {
-	    eletter[i][j]= TILT;            //eltuntetendonek jeloljuk
+	    eletter[i][j]= TILT;            //eltuntetendonek jeloljuk
 	  }
 	}
 
@@ -332,7 +332,7 @@ void main(void)
 
   init(eletter);
 //  general(eletter);
-  while (1)     //men
+  while (1)     //menu
   {
     clrscr();
 
